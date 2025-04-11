@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-rgb: 245, 245, 245;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+}
+
+.upload-dialog {
+  background: white;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dropzone {
+  border: 2px dashed #ccc;
+  border-radius: 0.25rem;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.dropzone.active {
+  border-color: #2196f3;
+}
+
+.dropzone.uploading {
+  border-color: #4caf50;
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.selected-files,
+.processed-files {
+  text-align: left;
+  margin: 1rem 0;
+}
+
+.selected-files ul,
+.processed-files ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.selected-files li,
+.processed-files li {
+  padding: 0.5rem;
+  border-bottom: 1px solid #eee;
+}
+
+.error {
+  color: #d32f2f;
+  background-color: #ffebee;
+  padding: 1rem;
+  border-radius: 0.25rem;
+  margin: 1rem 0;
+}
