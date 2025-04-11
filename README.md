@@ -21,14 +21,16 @@ This is part of a two-stage interview process for a part-time engineering positi
 costcrunch-interview/
 ├── backend/
 │   ├── routes.py           # FastAPI routes with mock data
-│   │   └── route.ts
-│   │   └── page.tsx
-│   │   └── layout.tsx
-│   │   └── globals.css
+│   ├── tests/
+│   │   └── test_sample.py  # Sample test file
+│   └── requirements.txt    # Python dependencies
+├── frontend/
 │   ├── components/
 │   │   └── UploadDialog.tsx
-│   ├── package.json
-│   └── README.md
+│   ├── app/
+│   │   └── page.tsx
+│   └── package.json
+└── README.md
 ```
 
 ### Setup Instructions
@@ -88,51 +90,69 @@ The backend includes 15 API endpoints that need test coverage. A sample test fil
 3. Follow the testing patterns shown
 4. Consider all test cases mentioned in the comments
 
-The endpoints to test include:
+Required endpoints to test:
 
-- Vendor management
-- Material tracking
-- Invoice handling
-- Project management
-- Analytics endpoints
-- Price history
-- Payment terms
-- Stock management
+- Vendor management (GET /vendors/, GET /vendors/{id})
+- Invoice handling (GET /invoices/, GET /invoices/{id})
+- Project management (GET /projects/, GET /projects/{id}/invoices)
+- Basic analytics (GET /analytics/monthly-spend)
+
+Optional endpoints to test:
+
+- Material tracking (GET /materials/)
+- Price history (GET /materials/price-history/{id})
+- Payment terms (GET /vendors/{id}/payment-terms)
+- Stock management (GET /materials/low-stock)
+- Advanced analytics (spend-by-vendor, spend-by-category)
 
 For each endpoint, remember to test:
 
 - Successful responses
 - Authentication requirements
 - Error cases (404, invalid params, etc.)
-- Query parameter variations
-- Response data structure and content
+- Query parameter variations (required)
+- Response data structure and content (required)
+- Edge cases and boundary testing (optional)
+- Performance testing (optional)
 
 #### 2. Fix Frontend Bugs
 
 The `UploadDialog` component contains several intentional bugs that need to be fixed:
 
-1. **File Validation Issues:**
+Required fixes:
 
-   - No file type validation
-   - No file size checks
-   - No file type restrictions in dropzone
-   - No multiple file handling configuration
+1. **Critical Issues:**
+   - File size checks
+   - Error handling for network issues
+   - Progress tracking
+   - Basic error messages
 
-2. **UI/UX Issues:**
+Optional improvements:
 
-   - No file removal functionality
-   - No proper progress tracking
-   - Inconsistent state updates
-   - No cleanup after completion
-   - No file list display
-   - No progress display
-   - No error clearing functionality
-   - No disabled state during upload
+1. **Additional Validation:**
 
-3. **Error Handling Issues:**
-   - No proper error handling for network issues
-   - Generic error messages
-   - Missing error states
+   - File type validation
+   - Multiple file handling
+   - Duplicate file detection
+
+2. **UI Enhancements:**
+
+   - File removal functionality
+   - Progress display
+   - Error clearing functionality
+   - Disabled state during upload
+
+3. **Advanced Features:**
+   - Drag and drop improvements
+   - Upload cancellation
+   - Retry mechanism
+   - Chunked uploads
+
+### Time Allocation
+
+- Expected time: 1-2 hours
+  - Required tasks: ~1 hour
+  - Optional improvements: ~1 hour
 
 ### Evaluation Criteria
 
