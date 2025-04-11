@@ -18,13 +18,12 @@ This is part of a two-stage interview process for a part-time engineering positi
 ### Project Structure
 
 ```
-file-upload-service/
-├── app/
-│   ├── api/
-│   │   └── upload/
-│   │       └── route.ts
-│   │   ├── page.tsx
-│   │   ├── layout.tsx
+costcrunch-interview/
+├── backend/
+│   ├── routes.py           # FastAPI routes with mock data
+│   │   └── route.ts
+│   │   └── page.tsx
+│   │   └── layout.tsx
 │   │   └── globals.css
 │   ├── components/
 │   │   └── UploadDialog.tsx
@@ -34,9 +33,40 @@ file-upload-service/
 
 ### Setup Instructions
 
-1. Install dependencies:
+#### Backend Setup
+
+1. Create and activate a Python virtual environment:
 
    ```bash
+   # On macOS/Linux:
+   python -m venv venv
+   source venv/bin/activate
+
+   # On Windows:
+   python -m venv venv
+   .\venv\Scripts\activate
+   ```
+
+2. Install Python dependencies:
+
+   ```bash
+   cd backend
+   pip install -r requirements.txt
+   ```
+
+3. Run the FastAPI server:
+   ```bash
+   uvicorn routes:app --reload --port 8000
+   ```
+
+The backend will run on `http://localhost:8000`. You can view the API documentation at `http://localhost:8000/docs`.
+
+#### Frontend Setup
+
+1. Install Node.js dependencies:
+
+   ```bash
+   cd frontend
    npm install
    ```
 
@@ -45,11 +75,39 @@ file-upload-service/
    npm run dev
    ```
 
-The application will run on `http://localhost:3000` with the API endpoint at `/api/upload`.
+The frontend will run on `http://localhost:3000`.
 
 ### Your Tasks
 
-#### 1. Fix the Bugs
+#### 1. Write API Tests
+
+The backend includes 15 API endpoints that need test coverage. A sample test file (`test_sample.py`) is provided showing how to test the `/vendors/` endpoint. Your task is to:
+
+1. Study the sample test
+2. Write similar tests for all other endpoints
+3. Follow the testing patterns shown
+4. Consider all test cases mentioned in the comments
+
+The endpoints to test include:
+
+- Vendor management
+- Material tracking
+- Invoice handling
+- Project management
+- Analytics endpoints
+- Price history
+- Payment terms
+- Stock management
+
+For each endpoint, remember to test:
+
+- Successful responses
+- Authentication requirements
+- Error cases (404, invalid params, etc.)
+- Query parameter variations
+- Response data structure and content
+
+#### 2. Fix Frontend Bugs
 
 The `UploadDialog` component contains several intentional bugs that need to be fixed:
 
@@ -76,17 +134,6 @@ The `UploadDialog` component contains several intentional bugs that need to be f
    - Generic error messages
    - Missing error states
 
-#### 2. Write Tests
-
-- Implement unit tests for the API endpoint
-- Add integration tests for file upload functionality
-- Test error handling and edge cases
-- Aim for good test coverage
-
-### Time Allocation
-
-- Expected time: 1-2 hours
-
 ### Evaluation Criteria
 
 - Test coverage and quality
@@ -94,46 +141,3 @@ The `UploadDialog` component contains several intentional bugs that need to be f
 - Code quality and documentation
 - Problem-solving approach
 - Ability to work with AI-assisted development tools
-
-## Part 2: Technical Interview
-
-### Format
-
-- 45-60 minute Zoom call
-
-### Structure
-
-1. **Introduction and Background (15 minutes)**
-
-   - Brief introduction
-   - Discussion of your experience
-   - Questions about your interest in the role
-
-2. **System Design Discussion (45 minutes)**
-   - Infrastructure design
-   - Database architecture
-   - Scalability considerations
-   - Security best practices
-
-### Topics to Prepare
-
-- Cloud infrastructure (AWS/GCP/Azure)
-- Database design and optimization
-- API design and implementation
-- Security best practices
-- Scalability patterns
-- Monitoring and observability
-
-## Technology Stack
-
-- Next.js 14
-- React 18
-- TypeScript
-- Tailwind CSS
-- React Dropzone
-
-## Questions?
-
-If you have any questions about the process, please don't hesitate to reach out to alex@costcrunch.ai
-
-Good luck!
