@@ -273,7 +273,7 @@ async def list_invoices(
         invoices = [i for i in invoices if i["date"] >= start_date]
     if end_date:
         invoices = [i for i in invoices if i["date"] <= end_date]
-    return {"invoices": invoices}
+    return {"invoices": invoices} 
 
 @app.get("/invoices/{invoice_id}")
 async def get_invoice(invoice_id: str, request: Request):
